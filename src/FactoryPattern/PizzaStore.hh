@@ -1,3 +1,6 @@
+#ifndef __PIZZA_STORE_HH__
+#define __PIZZA_STORE_HH__
+
 #include <string>
 #include "Pizza.hh"
 
@@ -13,6 +16,10 @@ public:
     Pizza* orderPizza(string type);
 	virtual Pizza* createPizza(string type) = 0;
 };
+
+
+#endif
+
 
 
 /* End of the File */

@@ -15,7 +15,9 @@ Pizza* NYPizzaStore::createPizza(string item)
     else if(0 == item.compare("Veggie")){
         return new NYVeggiePizza();
     }
-    //return new NoPizza();
+    else{
+        return new NoPizza();
+    }
 }
 
 
