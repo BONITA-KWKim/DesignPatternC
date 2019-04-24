@@ -1,26 +1,21 @@
 #include "NYPizzaStore.hh"
-#include "NoPizza.hh"
-#include "NYCheesePizza.hh"
+
 
 Pizza* NYPizzaStore::createPizza(string item)
 {
-    if(item.compare("Cheese")){
+    if(0 == item.compare("Cheese")){
         return new NYCheesePizza();
     }
-    return new NoPizza;
-    
-    /*
-    if(item.compare("cheese"))
-        return new NYCheesePizza();
-    else if(item.compare("pepperoni"))
-        return new NYPepperoniPizza();
-    else if(item.compare("clam"))
+    else if(0 == item.compare("Clam")){
         return new NYClamPizza();
-    else if(item.compare("veggie"))
+    }
+    else if(0 == item.compare("Pepperoni")){
+        return new NYPepperoniPizza();
+    }
+    else if(0 == item.compare("Veggie")){
         return new NYVeggiePizza();
-    else
-        return null;
-    */
+    }
+    //return new NoPizza();
 }
 
 

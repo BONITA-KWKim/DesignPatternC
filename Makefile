@@ -28,7 +28,7 @@ mock:
 	${GCC11} -o ${BIN}/sum_test ${SRC}/sum_test.cc ${SRC}/sum.cc -I${INC} -isystem -pthread ${LIB_GTEST}
 
 factory:
-	${GCC11} -o ${BIN}/factory_pattern ${SRC}/FactoryPattern/PizzaStore.cc ${SRC}/FactoryPattern/Pizza.cc ${SRC}/FactoryPattern/NYPizzaStore.cc $(FACTORY_PRODUCT) -I${FACTORY_PRO_INC} -I${SRC}/FactoryPattern -I${SRC}/FactoryPattern/Pizza
+	${GCC11} -o ${BIN}/factory_pattern ${SRC}/FactoryPattern/TestDrive.cc ${SRC}/FactoryPattern/PizzaStore.cc ${SRC}/FactoryPattern/Pizza.cc ${SRC}/FactoryPattern/NYPizzaStore.cc $(FACTORY_PRODUCT) -I${FACTORY_PRO_INC} -I${SRC}/FactoryPattern -I${SRC}/FactoryPattern/Pizza
 
 	
 clean:

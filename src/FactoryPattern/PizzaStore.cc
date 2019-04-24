@@ -27,10 +27,6 @@ Pizza* PizzaStore::orderPizza(string type){
     return pizza;
 }
 
-int main(int argc, char * argv[]){
-    printf("Hello Factory Pattern.");
-    return 0;
-}
 
 
 /* End of the File */
