@@ -11,7 +11,7 @@ void Pizza::prepare(){
     }
     */
     for (int i = 0; toppings.size() > i; ++i){
-        printf("\t%s", toppings[i].c_str());
+        printf("\t%s\n", toppings[i].c_str());
     }
 }
 

@@ -19,32 +19,63 @@ LIB_GTEST=-L${GTEST_DIR}/build -lgtest
 #####
 
 #####
-all:
-	${GCC11} -o ${BIN}/main ${SRC}/main.cc ${SRC}/sum.cc -I${INC}
+all: factory_method abstract_factory
+#	${GCC11} -o ${BIN}/main ${SRC}/main.cc ${SRC}/sum.cc -I${INC}
 
 mock:
 	#${GCC11} -o ${BIN}/sum_test ${SRC}/sum_test.cc ${SRC}/sum.cc -I${INC} -isystem -L${GTEST_DIR}/build -pthread -lgtest 
 	${GCC11} -o ${BIN}/sum_test ${SRC}/sum_test.cc ${SRC}/sum.cc -I${INC} -isystem -pthread ${LIB_GTEST}
 
-##### Factory Pattern
-FACTORY_PIZZA_STORE=${wildcard ${SRC}/FactoryPattern/PizzaStore/*.cc}
-FACTORY_PIZZA_STORE_INC=${SRC}/FactoryPattern/PizzaStore
-FACTORY_PRODUCT_NY=${wildcard ${SRC}/FactoryPattern/Pizza/NYStyle/*.cc} 
-FACTORY_PRO_INC_NY=${SRC}/FactoryPattern/Pizza/NYStyle
-FACTORY_PRODUCT_CHICAGO=${wildcard ${SRC}/FactoryPattern/Pizza/ChicagoStyle/*.cc} 
-FACTORY_PRO_INC_CHICAGO=${SRC}/FactoryPattern/Pizza/ChicagoStyle
+##### Factory Method Pattern #####
+FACTORY_METHOD_HOME = ${SRC}/FactoryMethodPattern
+FACTORY_METHOD_PIZZA_STORE=${wildcard ${FACTORY_METHOD_HOME}/PizzaStore/*.cc}
+FACTORY_METHOD_PIZZA_STORE_INC=${FACTORY_METHOD_HOME}/PizzaStore
+FACTORY_METHOD_PRODUCT_NY=${wildcard ${FACTORY_METHOD_HOME}/Pizza/NYStyle/*.cc} 
+FACTORY_METHOD_PRO_INC_NY=${FACTORY_METHOD_HOME}/Pizza/NYStyle
+FACTORY_METHOD_PRODUCT_CHICAGO=${wildcard ${FACTORY_METHOD_HOME}/Pizza/ChicagoStyle/*.cc} 
+FACTORY_METHOD_PRO_INC_CHICAGO=${FACTORY_METHOD_HOME}/Pizza/ChicagoStyle
 
-factory:
+factory_method:
+	@echo "----- build factory method -----"
 	${GCC11} \
-	${SRC}/FactoryPattern/TestDrive.cc \
-	${SRC}/FactoryPattern/PizzaStore.cc \
-	${SRC}/FactoryPattern/Pizza.cc \
-	-I${SRC}/FactoryPattern \
-	${FACTORY_PIZZA_STORE} -I${FACTORY_PIZZA_STORE_INC} \
-	$(FACTORY_PRODUCT_NY) -I${FACTORY_PRO_INC_NY} \
-	${FACTORY_PRODUCT_CHICAGO} -I${FACTORY_PRO_INC_CHICAGO} \
-	${SRC}/FactoryPattern/Pizza/NoPizza.cc -I${SRC}/FactoryPattern/Pizza \
-	-o ${BIN}/factory_pattern
+	${FACTORY_METHOD_HOME}/TestDrive.cc \
+	${FACTORY_METHOD_HOME}/PizzaStore.cc \
+	${FACTORY_METHOD_HOME}/Pizza.cc \
+	-I${FACTORY_METHOD_HOME} \
+	${FACTORY_METHOD_PIZZA_STORE} -I${FACTORY_METHOD_PIZZA_STORE_INC} \
+	$(FACTORY_METHOD_PRODUCT_NY) -I${FACTORY_METHOD_PRO_INC_NY} \
+	${FACTORY_METHOD_PRODUCT_CHICAGO} -I${FACTORY_METHOD_PRO_INC_CHICAGO} \
+	${FACTORY_METHOD_HOME}/Pizza/NoPizza.cc -I${FACTORY_METHOD_HOME}/Pizza \
+	-o ${BIN}/$@
+
+##### Abstract Factory Pattern #####
+ABSTRACT_FACTORY_HOME = ${SRC}/AbstractFactoryPattern
+ABSTRACT_FACTORY_PIZZA_STORE=${wildcard ${ABSTRACT_FACTORY_HOME}/PizzaStore/*.cc}
+ABSTRACT_FACTORY_PIZZA_STORE_INC=${ABSTRACT_FACTORY_HOME}/PizzaStore
+ABSTRACT_FACTORY_PRODUCT_NY=${wildcard ${ABSTRACT_FACTORY_HOME}/Pizza/NYStyle/*.cc} 
+ABSTRACT_FACTORY_PRO_INC_NY=${ABSTRACT_FACTORY_HOME}/Pizza/NYStyle
+ABSTRACT_FACTORY_PRODUCT_CHICAGO=${wildcard ${ABSTRACT_FACTORY_HOME}/Pizza/ChicagoStyle/*.cc} 
+ABSTRACT_FACTORY_PRO_INC_CHICAGO=${ABSTRACT_FACTORY_HOME}/Pizza/ChicagoStyle
+
+ABSTRACT_FACTORY_PIZZA_INGREDIENT_FACTORY=${wildcard ${ABSTRACT_FACTORY_HOME}/PizzaIngredientFactory/*.cc}
+ABSTRACT_FACTORY_PIZZA_INGREDIENT_FACTORY_INC=${ABSTRACT_FACTORY_HOME/PizzaIngredientFactory}
+ABSTRACT_FACTORY_PIZZA_INGREDIENT=${wildcard ${ABSTRACT_FACTORY_HOME}/PizzaIngredients/*.cc}
+ABSTRACT_FACTORY_PIZZA_INGREDIENT_INC=${ABSTRACT_FACTORY_HOME}/PizzaIngredients
+
+abstract_factory:
+	@echo "----- build abstract factory -----"
+	${GCC11} \
+	${ABSTRACT_FACTORY_HOME}/TestDrive.cc \
+	${ABSTRACT_FACTORY_HOME}/PizzaStore.cc \
+	${ABSTRACT_FACTORY_HOME}/Pizza.cc \
+	-I${ABSTRACT_FACTORY_HOME} \
+	${ABSTRACT_FACTORY_PIZZA_STORE} -I${ABSTRACT_FACTORY_PIZZA_STORE_INC} \
+	$(ABSTRACT_FACTORY_PRODUCT_NY) -I${ABSTRACT_FACTORY_PRO_INC_NY} \
+	${ABSTRACT_FACTORY_PRODUCT_CHICAGO} -I${ABSTRACT_FACTORY_PRO_INC_CHICAGO} \
+	${ABSTRACT_FACTORY_HOME}/Pizza/NoPizza.cc -I${ABSTRACT_FACTORY_HOME}/Pizza \
+	${ABSTRACT_FACTORY_PIZZA_INGREDIENT_FACTORY} -I${ABSTRACT_FACTORY_PIZZA_INGREDIENT_FACTORY_INC} \
+	${ABSTRACT_FACTORY_PIZZA_INGREDIENT} -I${ABSTRACT_FACTORY_PIZZA_INGREDIENT_INC} \
+	-o ${BIN}/$@
 
 
 

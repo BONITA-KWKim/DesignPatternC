@@ -6,12 +6,17 @@ int main(int argc, char * argv[]){
     /**/
     PizzaStore* NYBranch = new NYPizzaStore();
     
+    printf("**********\n");
     Pizza* NYPizza = NYBranch->orderPizza("Cheese");
-    //NYPizza = NYBranch->orderPizza("Clam");
-    
+    printf("**********\n");
+    NYPizza = NYBranch->orderPizza("Clam");
+
     PizzaStore* ChicagoBranch = new ChicagoPizzaStore();
     
+    printf("**********\n");
     Pizza* ChicagoPizza = ChicagoBranch->orderPizza("Cheese");
+    printf("**********\n");
+    ChicagoPizza = ChicagoBranch->orderPizza("Veggie");
     
     return 0;
 }
