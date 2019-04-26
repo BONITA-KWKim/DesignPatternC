@@ -15,7 +15,7 @@ public:
     Sauce* createSauce();
     Cheese* createCheese();
     Pepperoni* createPepperoni();
-    //Clams* createClams();
+    Clams* createClams();
 };
 
 #endif

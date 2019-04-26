@@ -3,13 +3,14 @@
 
 
 #include "PizzaStore.hh"
+#include "NYPizzaIngredientFactory.hh"
 
 /* Pizzas */
 #include "NoPizza.hh"
-#include "NYCheesePizza.hh"
-#include "NYClamPizza.hh"
-#include "NYPepperoniPizza.hh"
-#include "NYVeggiePizza.hh"
+#include "CheesePizza.hh"
+#include "ClamsPizza.hh"
+#include "PepperoniPizza.hh"
+#include "VeggiePizza.hh"
 
 class NYPizzaStore : public PizzaStore{
 public:

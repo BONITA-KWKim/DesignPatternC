@@ -3,13 +3,14 @@
 
 
 #include "PizzaStore.hh"
+#include "ChicagoPizzaIngredientFactory.hh"
 
 /* Pizzas */
 #include "NoPizza.hh"
-#include "ChicagoCheesePizza.hh"
-#include "ChicagoClamPizza.hh"
-#include "ChicagoPepperoniPizza.hh"
-#include "ChicagoVeggiePizza.hh"
+#include "CheesePizza.hh"
+#include "ClamsPizza.hh"
+#include "PepperoniPizza.hh"
+#include "VeggiePizza.hh"
 
 class ChicagoPizzaStore : public PizzaStore{
 public:
@@ -18,7 +19,6 @@ public:
 
 
 #endif
-
 
 
 

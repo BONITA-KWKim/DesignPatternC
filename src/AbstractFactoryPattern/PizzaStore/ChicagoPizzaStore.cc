@@ -1,25 +1,32 @@
 #include "ChicagoPizzaStore.hh"
 
-
 Pizza* ChicagoPizzaStore::createPizza(string item)
 {
+    Pizza* pizza = NULL;
+    PizzaIngredientFactory* ingredientFactory = new ChicagoPizzaIngredientFactory();
+    
     if(0 == item.compare("Cheese")){
-        return new ChicagoCheesePizza();
+        pizza = new CheesePizza(ingredientFactory);
+        pizza->setName("Chicago Style Cheese Pizza");
     }
-    else if(0 == item.compare("Clam")){
-        return new ChicagoClamPizza();
+    else if(0 == item.compare("Clams")){
+        pizza = new ClamsPizza(ingredientFactory);
+        pizza->setName("Chicago Style Clams Pizza");
     }
     else if(0 == item.compare("Pepperoni")){
-        return new ChicagoPepperoniPizza();
+        pizza = new PepperoniPizza(ingredientFactory);
+        pizza->setName("Chicago Style Pepperoni Pizza");
     }
     else if(0 == item.compare("Veggie")){
-        return new ChicagoVeggiePizza();
+        pizza = new VeggiePizza(ingredientFactory);
+        pizza->setName("Chicago Style Veggie Pizza");
     }
     else{
-        return new NoPizza();
+        pizza = new NoPizza(ingredientFactory);
+        pizza->setName("No Pizza");
     }
+    return pizza;
 }
 
 
 /* End of the File */
-

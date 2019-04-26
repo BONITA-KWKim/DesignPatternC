@@ -1,23 +1,31 @@
 #include "NYPizzaStore.hh"
 
-
 Pizza* NYPizzaStore::createPizza(string item)
 {
+    Pizza* pizza = NULL;
+    PizzaIngredientFactory* ingredientFactory = new NYPizzaIngredientFactory();
+    
     if(0 == item.compare("Cheese")){
-        return new NYCheesePizza();
+        pizza = new CheesePizza(ingredientFactory);
+        pizza->setName("New York Style Cheese Pizza");
     }
-    else if(0 == item.compare("Clam")){
-        return new NYClamPizza();
+    else if(0 == item.compare("Clams")){
+        pizza = new ClamsPizza(ingredientFactory);
+        pizza->setName("New York Style Clams Pizza");
     }
     else if(0 == item.compare("Pepperoni")){
-        return new NYPepperoniPizza();
+        pizza = new PepperoniPizza(ingredientFactory);
+        pizza->setName("New York Style Pepperoni Pizza");
     }
     else if(0 == item.compare("Veggie")){
-        return new NYVeggiePizza();
+        pizza = new VeggiePizza(ingredientFactory);
+        pizza->setName("New York Style Veggie Pizza");
     }
     else{
-        return new NoPizza();
+        pizza = new NoPizza(ingredientFactory);
+        pizza->setName("No Pizza");
     }
+    return pizza;
 }
 
 

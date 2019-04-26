@@ -1,13 +1,13 @@
-#ifndef __NO_PIZZA_HH__
-#define __NO_PIZZA_HH__
+#ifndef __PEPPERONI_PIZZA_HH__
+#define __PEPPERONI_PIZZA_HH__
 
 #include "Pizza.hh"
 #include "PizzaIngredientFactory.hh"
 
-class NoPizza : public Pizza{
+class PepperoniPizza : public Pizza{
 public:
     PizzaIngredientFactory* ingredientFactory;
-    NoPizza(PizzaIngredientFactory* ingredientFactory);
+    PepperoniPizza(PizzaIngredientFactory* ingredientFactory);
     void prepare();
 };
 
