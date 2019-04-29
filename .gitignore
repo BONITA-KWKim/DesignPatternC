@@ -7,3 +7,6 @@ bin/*
 
 # ignore Mac specific files
 .DS_Store
+
+# Ignore backup file
+*.bak
