@@ -1,7 +1,8 @@
 ##### 
 GTEST_DIR=googletest
 
-ROOT=/Users/mts.dev/Documents/Bonita.E/workspace/C/DesignPattern
+#ROOT=/Users/mts.dev/Documents/Bonita.E/workspace/C/DesignPattern
+ROOT:=$(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))
 
 SRC=${ROOT}/src
 INC=${ROOT}/include
