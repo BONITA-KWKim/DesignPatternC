@@ -4,7 +4,6 @@
 #include <cstdio>
 #include <string>
 
-#include "Beverage.hh"
 #include "CondimentDecorator.hh"
 
 using namespace std;
