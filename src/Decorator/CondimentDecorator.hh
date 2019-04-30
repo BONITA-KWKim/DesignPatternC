@@ -9,7 +9,12 @@ using namespace std;
 
 class CondimentDecorator : public Beverage{
 public:
-    virtual string getDescription()=0;
+    CondimentDecorator(Beverage* beverage) : beverage(beverage) { };
+    ~CondimentDecorator() {delete this->beverage;};
+    string getDescription(){return beverage->getDescription();};
+
+protected:
+    Beverage* beverage;
 };
 
 #endif

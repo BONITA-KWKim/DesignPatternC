@@ -7,13 +7,9 @@ using namespace std;
 
 class Beverage{
 public:
-    string description = "No description";
-
-    string getDescription(){
-        return description;
-    }
-
+    virtual ~Beverage(){};
     virtual double cost()=0;
+    virtual string getDescription()=0;
 };
 
 #endif

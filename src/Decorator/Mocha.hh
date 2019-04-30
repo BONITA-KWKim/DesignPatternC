@@ -10,12 +10,9 @@ using namespace std;
 
 class Mocha : public CondimentDecorator{
 public:
-    Mocha(Beverage* beverage);
+    Mocha(Beverage* beverage) : CondimentDecorator(beverage){};
+    ~Mocha(){};
     string getDescription();
     double cost();
-    
-private:
-    Beverage* beverage;
 };
-
 #endif

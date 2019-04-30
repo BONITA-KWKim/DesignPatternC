@@ -1,9 +1,10 @@
 #include "Espresso.hh"
 
-Espresso::Espresso(){
-    description = "Espresso";
-}
-
 double Espresso::cost(){
     return 1.99;
 }
+
+string Espresso::getDescription(){
+    return "Espresso";
+}
+

@@ -5,7 +5,8 @@ int main(int argc, char** argv){
     
     Beverage* beverage = new Espresso();
     beverage = new Mocha(beverage);
-    
+    beverage = new Mocha(beverage);
+
     cout << beverage->getDescription() << " $" << beverage->cost() << endl;
     
     return 0;
