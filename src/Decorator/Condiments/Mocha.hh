@@ -1,7 +1,6 @@
 #ifndef __MOCHA_HH__
 #define __MOCHA_HH__
 
-#include <cstdio>
 #include <string>
 
 #include "CondimentDecorator.hh"
@@ -15,4 +14,5 @@ public:
     string getDescription();
     double cost();
 };
+
 #endif

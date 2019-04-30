@@ -20,12 +20,15 @@ LIB_GTEST=-L${GTEST_DIR}/build -lgtest
 #####
 
 #####
-all: factory_method abstract_factory
+all: 
 #	${GCC11} -o ${BIN}/main ${SRC}/main.cc ${SRC}/sum.cc -I${INC}
 
 mock:
 	#${GCC11} -o ${BIN}/sum_test ${SRC}/sum_test.cc ${SRC}/sum.cc -I${INC} -isystem -L${GTEST_DIR}/build -pthread -lgtest 
 	${GCC11} -o ${BIN}/sum_test ${SRC}/sum_test.cc ${SRC}/sum.cc -I${INC} -isystem -pthread ${LIB_GTEST}
+
+#####
+design_pattern: factory_method abstract_factory decorator
 
 ##### Factory Method Pattern #####
 FACTORY_METHOD_HOME = ${SRC}/FactoryMethodPattern
@@ -84,11 +87,17 @@ abstract_factory:
 ##### Decorator Pattern #####
 DECORATOR_HOME = ${SRC}/Decorator
 
+DECORATOR_BEVERAGES=${wildcard ${DECORATOR_HOME}/Beverages/*.cc}
+DECORATOR_BEVERAGES_INC=${DECORATOR_HOME}/Beverages
+DECORATOR_CONDIMENTS=${wildcard ${DECORATOR_HOME}/Condiments/*.cc}
+DECORATOR_CONDIMENTS_INC=${DECORATOR_HOME}/Condiments
 
 decorator:
 	@echo "----- build decorator -----"
 	${GCC11} \
 	${wildcard ${DECORATOR_HOME}/*.cc} -I${DECORATOR_HOME}  \
+	${DECORATOR_BEVERAGES} -I${DECORATOR_BEVERAGES_INC} \
+	${DECORATOR_CONDIMENTS} -I${DECORATOR_CONDIMENTS_INC} \
  	-o ${BIN}/$@
 
 clean:
