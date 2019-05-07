@@ -100,6 +100,30 @@ decorator:
 	${DECORATOR_CONDIMENTS} -I${DECORATOR_CONDIMENTS_INC} \
  	-o ${BIN}/$@
 
+
+##### Command Pattern #####
+COMMAND_HOME=${SRC}/CommandPattern
+
+COMMAND_COMMANDS=${wildcard ${COMMAND_HOME}/Commands/*.cc}
+COMMAND_COMMANDS_INC=${COMMAND_HOME}/Commands
+COMMAND_INVOKER=${wildcard ${COMMAND_HOME}/Invoker/*.cc}
+COMMAND_INVOKER_INC=${COMMAND_HOME}/Invoker
+COMMAND_RECEIVERS=${wildcard ${COMMAND_HOME}/Receivers/*.cc}
+COMMAND_RECEIVERS_INC=${COMMAND_HOME}/Receivers
+COMMAND_CLIENT=${wildcard ${COMMAND_HOME}/Client/*.cc}
+COMMAND_CLIENT_INC=${COMMAND_HOME}/Client
+
+command:
+	@echo "----- build command -----"
+	${GCC11} \
+	${wildcard ${COMMAND_HOME}/*.cc} -I${COMMAND_HOME} \
+	${COMMAND_COMMANDS} -I${COMMAND_COMMANDS_INC} \
+	${COMMAND_INVOKER} -I${COMMAND_INVOKER_INC} \
+	${COMMAND_RECEIVERS} -I${COMMAND_RECEIVERS_INC} \
+	${COMMAND_CLIENT} -I${COMMAND_CLIENT_INC} \
+ 	-o ${BIN}/$@
+
+
 clean:
 	rm -rf ${BIN}/*
 	rm -rf ${OBJ}/*
