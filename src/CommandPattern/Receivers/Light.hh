@@ -15,11 +15,11 @@ public:
     };
     
     void on(){
-        printf("Light is ON.\n");
+        printf("Light in %s is ON.\n", location.c_str());
     };
 
     void off(){
-        printf("Light is OFF.\n");
+        printf("Light in %s is OFF.\n", location.c_str());
     };
     
     string getLocation(){
