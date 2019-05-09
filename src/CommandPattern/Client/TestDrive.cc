@@ -25,6 +25,21 @@ int main(int argc, char * argv[]){
     CeilingFanHighCommand * ceilingFanHighCommand = new CeilingFanHighCommand(ceilingFan);
     CeilingFanMediumCommand * ceilingFanMediumCommand = new CeilingFanMediumCommand(ceilingFan);
     CeilingFanLowCommand * ceilingFanLowCommand = new CeilingFanLowCommand(ceilingFan);
+    CeilingFanInfoCommand * ceilingFanInfoCommand = new CeilingFanInfoCommand(ceilingFan);
+
+    CeilingLight* ceilingLight = new CeilingLight();
+    CeilingLightOnCommand* ceilingLightOnCommand = new CeilingLightOnCommand(ceilingLight);
+    CeilingLightOffCommand* ceilingLightOffCommand = new CeilingLightOffCommand(ceilingLight);
+    
+    FaucetControl* faucetControl = new FaucetControl();
+    FaucetControlOpenCommand* faucetControlOpenCommand = new FaucetControlOpenCommand(faucetControl);
+    FaucetControlCloseCommand* faucetControlCloseCommand = new FaucetControlCloseCommand(faucetControl);
+    
+    GardenLight* gardenLight = new GardenLight();
+    GardenLightSetDuskCommand* gardenLightSetDuskCommand = new GardenLightSetDuskCommand(gardenLight);
+    GardenLightSetDawnCommand* gardenLightSetDawnCommand = new GardenLightSetDawnCommand(gardenLight);
+    GardenLightOnCommand* gardenLightOnCommand = new GardenLightOnCommand(gardenLight);
+    GardenLightOffCommand* gardenLightOffCommand = new GardenLightOffCommand(gardenLight);
 
     /*
      * simple remote controller
@@ -48,16 +63,22 @@ int main(int argc, char * argv[]){
      */
     RemoteController* remote = new RemoteController();
     // set commands on remote controller
-    remote->setCommand(0, livingRoomLightOn, livingRoomLightOff);
-    remote->setCommand(1, badRoomLightOn, badRoomLightOff);
-    remote->setCommand(2, ceilingFanMediumCommand, ceilingFanLowCommand);
-    remote->setCommand(5, garegeDoorOpen, garegeDoorClose);
-    remote->setCommand(6, applianceControlOnCommand, applianceControlOffCommand);
+    remote->setCommand(0, faucetControlOpenCommand, faucetControlCloseCommand);
+    remote->setCommand(1, gardenLightSetDuskCommand, gardenLightSetDawnCommand);
+    remote->setCommand(2, gardenLightOnCommand, gardenLightOffCommand);
+    remote->setCommand(3, ceilingFanLowCommand, ceilingFanInfoCommand);
+    remote->setCommand(4, garegeDoorOpen, garegeDoorClose);
+    remote->setCommand(5, applianceControlOnCommand, applianceControlOffCommand);
+    remote->setCommand(6, ceilingLightOnCommand, ceilingLightOffCommand);
     // print remote controleller info
     remote->getInfo();
     // push buttons
+    printf("\n----- remote controller test -----\n");
     for (int k = 0; BUTTON_NO > k; ++k){
+        printf("slot %d  on: ", k);
         remote->onButtonWasPushed(k);
+        printf("slot %d off: ", k);
         remote->offButtonWasPushed(k);
     }
+    printf("\n");
 }

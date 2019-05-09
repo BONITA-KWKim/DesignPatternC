@@ -8,7 +8,7 @@
 
 using namespace std;
 
-enum Speed { high, medium, low };
+enum Speed { high, medium, low, stop };
 
 class CeilingFan{
 public:
@@ -34,11 +34,16 @@ public:
             printf("Ceiling fan is on low speed.\n");
         }
     };
-    string getSpeed(){
+    void off(){
+        speed = stop;
+        printf("Ceiling fan is off.\n");
+    }
+    void getSpeed(){
         switch(speed){
-            case high: return "high"; break;
-            case medium: return "medium"; break;
-            case low: return "low"; break;
+            case high: printf("[INF]Ceiling fan is on high speed.\n"); break;
+            case medium: printf("[INF]Ceiling fan is on medium speed.\n"); break;
+            case low: printf("[INF]Ceiling fan is on low speed.\n"); break;
+            case stop: printf("[INF]Ceiling fan is off.\n"); break;
             default: break;
         }
     };

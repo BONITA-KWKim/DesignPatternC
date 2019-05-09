@@ -8,12 +8,17 @@ RemoteController::RemoteController(){
         onCommands[i] = noCommand;
         offCommands[i] = noCommand;
     }
+    settingCommand = noCommand;
+}
+
+void RemoteController::setCommand(Command* settingCommand){
+    this->settingCommand = settingCommand;
 }
 
 void RemoteController::setCommand(int slot, Command* onCommand, Command* offCommand){
     assert(BUTTON_NO > slot && 0 <= slot);
-    onCommands[slot] = onCommand;
-    offCommands[slot] = offCommand;
+    this->onCommands[slot] = onCommand;
+    this->offCommands[slot] = offCommand;
 }
 
 void RemoteController::onButtonWasPushed(int slot){
@@ -24,6 +29,18 @@ void RemoteController::onButtonWasPushed(int slot){
 void RemoteController::offButtonWasPushed(int slot){
     assert(BUTTON_NO > slot && 0 <= slot);
     offCommands[slot]->execute();
+}
+
+void RemoteController::settingButtonWasPushed(){
+    settingCommand->execute();
+}
+
+void RemoteController::setSettingValue(int value){
+    settingValue = value;
+}
+
+int RemoteController::getSettingValue(){
+    return settingValue;
 }
 
 void RemoteController::getInfo(){

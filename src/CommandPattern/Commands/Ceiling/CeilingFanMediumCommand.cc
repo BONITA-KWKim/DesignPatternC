@@ -7,4 +7,3 @@ CeilingFanMediumCommand::CeilingFanMediumCommand(CeilingFan* ceilingFan){
 void CeilingFanMediumCommand::execute(){
     ceilingFan->on(CEILING_FAN_SPEED_MEDIUM);
 }
-

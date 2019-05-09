@@ -16,6 +16,9 @@ using namespace std;
 #include "GarageDoor.hh"
 #include "ApplianceControl.hh"
 #include "CeilingFan.hh"
+#include "CeilingLight.hh"
+#include "FaucetControl.hh"
+#include "GardenLight.hh"
 /*
  * Commands
  */
@@ -28,5 +31,14 @@ using namespace std;
 #include "CeilingFanHighCommand.hh"
 #include "CeilingFanMediumCommand.hh"
 #include "CeilingFanLowCommand.hh"
+#include "CeilingFanInfoCommand.hh"
+#include "CeilingLightOnCommand.hh"
+#include "CeilingLightOffCommand.hh"
+#include "FaucetControlOpenCommand.hh"
+#include "FaucetControlCloseCommand.hh"
+#include "GardenLightSetDuskCommand.hh"
+#include "GardenLightSetDawnCommand.hh"
+#include "GardenLightOnCommand.hh"
+#include "GardenLightOffCommand.hh"
 
 #endif

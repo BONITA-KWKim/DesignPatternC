@@ -28,7 +28,7 @@ mock:
 	${GCC11} -o ${BIN}/sum_test ${SRC}/sum_test.cc ${SRC}/sum.cc -I${INC} -isystem -pthread ${LIB_GTEST}
 
 #####
-design_pattern: factory_method abstract_factory decorator
+design_pattern: factory_method abstract_factory decorator command
 
 ##### Factory Method Pattern #####
 FACTORY_METHOD_HOME = ${SRC}/FactoryMethodPattern
@@ -106,6 +106,17 @@ COMMAND_HOME=${SRC}/CommandPattern
 
 COMMAND_COMMANDS=${wildcard ${COMMAND_HOME}/Commands/*.cc}
 COMMAND_COMMANDS_INC=${COMMAND_HOME}/Commands
+COMMAND_COMMANDS_APPLIANCE=${wildcard ${COMMAND_HOME}/Commands/ApplianceControl/*.cc}
+COMMAND_COMMANDS_APPLIANCE_INC=${COMMAND_HOME}/Commands/ApplianceControl
+COMMAND_COMMANDS_CEILING_FAN=${wildcard ${COMMAND_HOME}/Commands/Ceiling/*.cc}
+COMMAND_COMMANDS_CEILING_FAN_INC=${COMMAND_HOME}/Commands/Ceiling
+COMMAND_COMMANDS_GARAGE=${wildcard ${COMMAND_HOME}/Commands/Garage/*.cc}
+COMMAND_COMMANDS_GARAGE_INC=${COMMAND_HOME}/Commands/Garage
+COMMAND_COMMANDS_LIGHT=${wildcard ${COMMAND_HOME}/Commands/Light/*.cc}
+COMMAND_COMMANDS_LIGHT_INC=${COMMAND_HOME}/Commands/Light
+COMMAND_COMMANDS_FAUCET=${wildcard ${COMMAND_HOME}/Commands/Faucet/*.cc}
+COMMAND_COMMANDS_FAUCET_INC=${COMMAND_HOME}/Commands/Faucet
+
 COMMAND_INVOKER=${wildcard ${COMMAND_HOME}/Invoker/*.cc}
 COMMAND_INVOKER_INC=${COMMAND_HOME}/Invoker
 COMMAND_RECEIVERS=${wildcard ${COMMAND_HOME}/Receivers/*.cc}
@@ -118,6 +129,11 @@ command:
 	${GCC11} \
 	${wildcard ${COMMAND_HOME}/*.cc} -I${COMMAND_HOME} \
 	${COMMAND_COMMANDS} -I${COMMAND_COMMANDS_INC} \
+	${COMMAND_COMMANDS_APPLIANCE} -I${COMMAND_COMMANDS_APPLIANCE_INC} \
+	${COMMAND_COMMANDS_CEILING_FAN} -I${COMMAND_COMMANDS_CEILING_FAN_INC} \
+	${COMMAND_COMMANDS_GARAGE} -I${COMMAND_COMMANDS_GARAGE_INC} \
+	${COMMAND_COMMANDS_LIGHT} -I${COMMAND_COMMANDS_LIGHT_INC} \
+	${COMMAND_COMMANDS_FAUCET} -I${COMMAND_COMMANDS_FAUCET_INC} \
 	${COMMAND_INVOKER} -I${COMMAND_INVOKER_INC} \
 	${COMMAND_RECEIVERS} -I${COMMAND_RECEIVERS_INC} \
 	${COMMAND_CLIENT} -I${COMMAND_CLIENT_INC} \
