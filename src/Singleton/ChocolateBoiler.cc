@@ -1,11 +1,14 @@
 #include "ChocolateBoiler.hh"
 
+ChocolateBoiler* ChocolateBoiler::chocolateBoiler = NULL;
+
 ChocolateBoiler::ChocolateBoiler(){
     empty = true;
     boiled = false;
 }
 
 ChocolateBoiler* ChocolateBoiler::getInstance(){
+    //if (!chocolateBoiler)
     if (NULL == chocolateBoiler){
         chocolateBoiler = new ChocolateBoiler();
     }

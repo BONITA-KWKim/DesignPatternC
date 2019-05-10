@@ -2,12 +2,13 @@
 #define __CHOCOLATE_BOILER_HH__
 
 #include <cstdio>
+#include <stddef.h>
 
 using namespace std;
 
 class ChocolateBoiler{
 public:
-    ChocolateBoiler* getInstance();
+    static ChocolateBoiler* getInstance();
     void fill();
     void drain();
     void boil();
@@ -18,7 +19,7 @@ private:
     bool empty;
     bool boiled;
     
-    ChocolateBoiler* chocolateBoiler;
+    static ChocolateBoiler* chocolateBoiler;
 
     ChocolateBoiler();
 };
