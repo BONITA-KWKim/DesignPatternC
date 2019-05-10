@@ -140,6 +140,17 @@ command:
  	-o ${BIN}/$@
 
 
+##### Singleton Pattern #####
+SINGLETON_HOME=${SRC}/Singleton
+
+singleton:
+	@echo "----- build command -----"
+	${GCC11} \
+	${wildcard ${SINGLETON_HOME}/*.cc} -I${SINGLETON_HOME} \
+ 	-o ${BIN}/$@
+
+
+
 clean:
 	rm -rf ${BIN}/*
 	rm -rf ${OBJ}/*
