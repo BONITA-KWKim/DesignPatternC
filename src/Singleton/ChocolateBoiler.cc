@@ -1,6 +1,7 @@
 #include "ChocolateBoiler.hh"
 
-ChocolateBoiler* ChocolateBoiler::chocolateBoiler = NULL;
+atomic<ChocolateBoiler*> ChocolateBoiler::chocolateBoiler { nullptr };
+mutex ChocolateBoiler::singletonMutex;
 
 ChocolateBoiler::ChocolateBoiler(){
     empty = true;
@@ -8,10 +9,13 @@ ChocolateBoiler::ChocolateBoiler(){
 }
 
 ChocolateBoiler* ChocolateBoiler::getInstance(){
-    //if (!chocolateBoiler)
-    if (NULL == chocolateBoiler){
-        chocolateBoiler = new ChocolateBoiler();
+    if(nullptr == chocolateBoiler){
+        lock_guard<mutex> lock(singletonMutex);
+        if(nullptr == chocolateBoiler){
+            chocolateBoiler = new ChocolateBoiler;
+        }
     }
+
     return chocolateBoiler;
 }
 

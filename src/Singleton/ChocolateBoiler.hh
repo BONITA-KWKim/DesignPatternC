@@ -3,6 +3,7 @@
 
 #include <cstdio>
 #include <stddef.h>
+#include <mutex>
 
 using namespace std;
 
@@ -18,9 +19,10 @@ public:
 private:
     bool empty;
     bool boiled;
-    
-    static ChocolateBoiler* chocolateBoiler;
 
+    static atomic<ChocolateBoiler*> chocolateBoiler;
+    static mutex singletonMutex;
+    
     ChocolateBoiler();
 };
 
