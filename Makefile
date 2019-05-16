@@ -28,7 +28,7 @@ mock:
 	${GCC11} -o ${BIN}/sum_test ${SRC}/sum_test.cc ${SRC}/sum.cc -I${INC} -isystem -pthread ${LIB_GTEST}
 
 #####
-design_pattern: factory_method abstract_factory decorator command
+design_pattern: factory_method abstract_factory decorator command singleton observer
 
 ##### Factory Method Pattern #####
 FACTORY_METHOD_HOME = ${SRC}/FactoryMethodPattern
@@ -144,11 +144,25 @@ command:
 SINGLETON_HOME=${SRC}/Singleton
 
 singleton:
-	@echo "----- build command -----"
+	@echo "----- build singleton -----"
 	${GCC11} \
 	${wildcard ${SINGLETON_HOME}/*.cc} -I${SINGLETON_HOME} \
  	-o ${BIN}/$@
 
+
+##### Observer Pattern #####
+OBSERVER_HOME=${SRC}/Observer
+
+OBSERVER_WHEATER_STATION=${OBSERVER_HOME}/WeatherStation
+OBSERVER_OBJECTS=${OBSERVER_HOME}/Observers
+
+observer:
+	@echo "----- build observer -----"
+	${GCC11} \
+	${wildcard ${OBSERVER_HOME}/*.cc} -I${OBSERVER_HOME} \
+	${wildcard ${OBSERVER_WHEATER_STATION}/*.cc} -I${OBSERVER_WHEATER_STATION} \
+	${wildcard ${OBSERVER_OBJECTS}/*.cc} -I${OBSERVER_OBJECTS} \
+ 	-o ${BIN}/$@
 
 
 clean:
