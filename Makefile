@@ -28,7 +28,7 @@ mock:
 	${GCC11} -o ${BIN}/sum_test ${SRC}/sum_test.cc ${SRC}/sum.cc -I${INC} -isystem -pthread ${LIB_GTEST}
 
 #####
-design_pattern: factory_method abstract_factory decorator command singleton observer strategy
+design_pattern: factory_method abstract_factory decorator command singleton observer strategy template_method
 
 ##### Factory Method Pattern #####
 FACTORY_METHOD_HOME = ${SRC}/FactoryMethodPattern
@@ -181,6 +181,20 @@ strategy:
 	${wildcard ${STRATEGY_CLIENTS}/*.cc} -I${STRATEGY_CLIENTS} \
 	${wildcard ${STRATEGY_FLY}/*.cc} -I${STRATEGY_FLY} \
 	${wildcard ${STRATEGY_QUACK}/*.cc} -I${STRATEGY_QUACK} \
+ 	-o ${BIN}/$@
+
+
+##### Template Method Pattern #####
+TEMPLATE_METHOD_HOME=${SRC}/template_method
+
+TEMPLATE_METHOD_TEMPLATES=${TEMPLATE_METHOD_HOME}/templates
+
+template_method:
+	@echo "----- build strategy -----"
+	${GCC11} \
+	${LIB_GTEST} \
+	${wildcard ${TEMPLATE_METHOD_HOME}/*.cc} -I${TEMPLATE_METHOD_HOME} \
+	${wildcard ${TEMPLATE_METHOD_TEMPLATES}/*.cc} -I${TEMPLATE_METHOD_TEMPLATES} \
  	-o ${BIN}/$@
 
 
