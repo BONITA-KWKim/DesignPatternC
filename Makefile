@@ -28,7 +28,7 @@ mock:
 	${GCC11} -o ${BIN}/sum_test ${SRC}/sum_test.cc ${SRC}/sum.cc -I${INC} -isystem -pthread ${LIB_GTEST}
 
 #####
-design_pattern: factory_method abstract_factory decorator command singleton observer
+design_pattern: factory_method abstract_factory decorator command singleton observer strategy
 
 ##### Factory Method Pattern #####
 FACTORY_METHOD_HOME = ${SRC}/FactoryMethodPattern
@@ -159,9 +159,28 @@ OBSERVER_OBJECTS=${OBSERVER_HOME}/Observers
 observer:
 	@echo "----- build observer -----"
 	${GCC11} \
+	${LIB_GTEST} \
 	${wildcard ${OBSERVER_HOME}/*.cc} -I${OBSERVER_HOME} \
 	${wildcard ${OBSERVER_WHEATER_STATION}/*.cc} -I${OBSERVER_WHEATER_STATION} \
 	${wildcard ${OBSERVER_OBJECTS}/*.cc} -I${OBSERVER_OBJECTS} \
+ 	-o ${BIN}/$@
+
+
+##### Strategy Pattern #####
+STRATEGY_HOME=${SRC}/strategy
+
+STRATEGY_CLIENTS=${STRATEGY_HOME}/clients
+STRATEGY_FLY=${STRATEGY_HOME}/fly
+STRATEGY_QUACK=${STRATEGY_HOME}/quack
+
+strategy:
+	@echo "----- build strategy -----"
+	${GCC11} \
+	${LIB_GTEST} \
+	${wildcard ${STRATEGY_HOME}/*.cc} -I${STRATEGY_HOME} \
+	${wildcard ${STRATEGY_CLIENTS}/*.cc} -I${STRATEGY_CLIENTS} \
+	${wildcard ${STRATEGY_FLY}/*.cc} -I${STRATEGY_FLY} \
+	${wildcard ${STRATEGY_QUACK}/*.cc} -I${STRATEGY_QUACK} \
  	-o ${BIN}/$@
 
 
