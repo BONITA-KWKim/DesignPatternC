@@ -28,7 +28,7 @@ mock:
 	${GCC11} -o ${BIN}/sum_test ${SRC}/sum_test.cc ${SRC}/sum.cc -I${INC} -isystem -pthread ${LIB_GTEST}
 
 #####
-design_pattern: factory_method abstract_factory decorator command singleton observer strategy template_method
+design_pattern: factory_method abstract_factory decorator command singleton observer strategy template_method iterator
 
 ##### Factory Method Pattern #####
 FACTORY_METHOD_HOME = ${SRC}/FactoryMethodPattern
@@ -190,11 +190,29 @@ TEMPLATE_METHOD_HOME=${SRC}/template_method
 TEMPLATE_METHOD_TEMPLATES=${TEMPLATE_METHOD_HOME}/templates
 
 template_method:
-	@echo "----- build strategy -----"
+	@echo "----- build template method -----"
 	${GCC11} \
 	${LIB_GTEST} \
 	${wildcard ${TEMPLATE_METHOD_HOME}/*.cc} -I${TEMPLATE_METHOD_HOME} \
 	${wildcard ${TEMPLATE_METHOD_TEMPLATES}/*.cc} -I${TEMPLATE_METHOD_TEMPLATES} \
+ 	-o ${BIN}/$@
+
+
+##### Iterator Pattern #####
+ITERATOR_HOME=${SRC}/iterator
+
+ITERATOR_PANCAKEHOUSE=${ITERATOR_HOME}/PancakeHouse
+ITERATOR_DINER=${ITERATOR_HOME}/Diner
+ITERATOR_MENU=${ITERATOR_HOME}/Menu
+
+iterator:
+	@echo "----- build iterator -----"
+	${GCC11} \
+	${LIB_GTEST} \
+	${wildcard ${ITERATOR_HOME}/*.cc} -I${ITERATOR_HOME} \
+	${wildcard ${ITERATOR_MENU}/*.cc} -I${ITERATOR_MENU} \
+	${wildcard ${ITERATOR_PANCAKEHOUSE}/*.cc} -I${ITERATOR_PANCAKEHOUSE} \
+	${wildcard ${ITERATOR_DINER}/*.cc} -I${ITERATOR_DINER} \
  	-o ${BIN}/$@
 
 
