@@ -5,6 +5,7 @@
 #include <string>
 
 #include "MenuItem.hh"
+#include "DinerMenuIterator.hh"
 
 #define MAX_ITEMS 5
 
@@ -32,9 +33,17 @@ public:
             menuItems[numberOfIndex] = new MenuItem(name, description, vegetarian, price);
         }
     };
-    MenuItem* getMenuItems(){
-        
+    Iterator* createIterator(){
+        return new DinerMenuIterator(menuItems[0]);
     }
+    void display(){
+        for(int i = 0; MAX_ITEMS > i; ++i){
+            /* print name, vegetarian, price */
+            printf("%s\t%d\t%lf\n", menuItems[i]->getName().c_str(), menuItems[i]->isVegetarian(), menuItems[i]->getPrice());
+            /* print description */
+            printf("%s\t\n", menuItems[i]->getDescription().c_str());
+        }
+    };
 private:
     int numberOfIndex = 0;
     MenuItem* menuItems[MAX_ITEMS];

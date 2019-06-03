@@ -9,7 +9,7 @@
 
 using namespace std;
 
-class PancakeHouseMenu {
+class PancakeHouseMenu{
 public:
     PancakeHouseMenu(){
         menuItems.push_back(new MenuItem("K&B pancake set", "Pancake with scrambled eggs and toast", true, 2.99));

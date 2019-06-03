@@ -204,6 +204,7 @@ ITERATOR_HOME=${SRC}/iterator
 ITERATOR_PANCAKEHOUSE=${ITERATOR_HOME}/PancakeHouse
 ITERATOR_DINER=${ITERATOR_HOME}/Diner
 ITERATOR_MENU=${ITERATOR_HOME}/Menu
+ITERATOR_ITERATOR=${ITERATOR_HOME}/menuitem_iterator
 
 iterator:
 	@echo "----- build iterator -----"
@@ -213,6 +214,7 @@ iterator:
 	${wildcard ${ITERATOR_MENU}/*.cc} -I${ITERATOR_MENU} \
 	${wildcard ${ITERATOR_PANCAKEHOUSE}/*.cc} -I${ITERATOR_PANCAKEHOUSE} \
 	${wildcard ${ITERATOR_DINER}/*.cc} -I${ITERATOR_DINER} \
+	${wildcard ${ITERATOR_ITERATOR}/*.cc} -I${ITERATOR_ITERATOR} \
  	-o ${BIN}/$@
 
 
