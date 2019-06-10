@@ -26,8 +26,8 @@ public:
     
     void printMenu(Iterator* iterator){
         while (iterator->hasNext()) {
-            MenuItem* menuItem = (MenuItem*)iterator->next();
-            printf("name: %s", menuItem->getName().c_str());
+            MenuItem* menuItem = iterator->next();
+            printf("name: %s\n", menuItem->getName().c_str());
         }
     };
     

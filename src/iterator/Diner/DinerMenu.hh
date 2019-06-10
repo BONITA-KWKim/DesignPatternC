@@ -37,7 +37,7 @@ public:
         return new DinerMenuIterator(menuItems[0]);
     }
     void display(){
-        for(int i = 0; MAX_ITEMS > i; ++i){
+        for(int i = 0; numberOfIndex > i; ++i){
             /* print name, vegetarian, price */
             printf("%s\t%d\t%lf\n", menuItems[i]->getName().c_str(), menuItems[i]->isVegetarian(), menuItems[i]->getPrice());
             /* print description */

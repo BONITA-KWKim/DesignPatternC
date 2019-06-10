@@ -1,6 +1,7 @@
 #ifndef __DINER_MENU_ITERATOR_HH__
 #define __DINER_MENU_ITERATOR_HH__
 
+#include <cstdio>
 #include "Iterator.hh"
 #include "MenuItem.hh"
 
@@ -9,10 +10,13 @@ public:
     DinerMenuIterator(MenuItem* item){
         this->items = item;
     };
+    
     MenuItem* next(){
-        MenuItem* menuItem = &items[position++];
+        printf("[TST] diner menu iterator position: %d\n", position);
+        MenuItem* menuItem = (MenuItem*)&items[position++]; //???
         return menuItem;
     };
+    
     bool hasNext(){
         if (position >= sizeof(items)){
             return false;
@@ -20,8 +24,9 @@ public:
             return true;
         }
     };
+    
 private:
-    MenuItem* items;
+    MenuItem* items; // ???
     int position = 0;
 };
 
