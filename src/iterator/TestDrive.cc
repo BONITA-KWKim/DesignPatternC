@@ -14,6 +14,9 @@ int main(int argc, char** argv){
     DinerMenu* dinerMenu = new DinerMenu();
     dinerMenu->display();
     
+    Waitress* waitress = new Waitress(pancakeHouseMenu, dinerMenu);
+    waitress->printMenu();
+    
     /* terminate */
     return 0;
 }

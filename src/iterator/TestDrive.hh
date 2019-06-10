@@ -3,6 +3,8 @@
 
 #include <cstdio>
 
+#include "Waitress.hh"
+
 #include "PancakeHouseMenu.hh"
 #include "DinerMenu.hh"
 
